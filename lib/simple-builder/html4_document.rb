@@ -3,7 +3,7 @@ module Simple
   class Builder
 
     def self.html4_document(&block)
-      HTML4Document.new.build(&block).to_html
+      HTML4Document.build(&block)
     end
 
     class HTML4Document < HTMLDocument

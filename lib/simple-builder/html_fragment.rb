@@ -3,7 +3,7 @@ module Simple
   class Builder
 
     def self.html_fragment(&block)
-      HTMLFragment.new.build(&block).to_html
+      HTMLFragment.build(&block)
     end
 
     class HTMLFragment < Builder

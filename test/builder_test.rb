@@ -15,7 +15,7 @@ module Simple
         b.html(lang: 'en') do
           b.h1('foo')
         end
-      end
+      end.to_html
       expected_html = <<END
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"><h1>foo</h1></html>
@@ -28,7 +28,7 @@ END
         b.html(lang: 'en') do
           b.h1('foo')
         end
-      end
+      end.to_html
       expected_html = <<END
 <!DOCTYPE html>
 <html lang="en"><h1>foo</h1></html>
@@ -39,13 +39,13 @@ END
     def test_fragment
       html = Simple::Builder.html_fragment do |b|
         b.h1('foo')
-      end
+      end.to_html
       expected_html = %q{<h1>foo</h1>}
       assert { html == expected_html }
     end
 
     def test_img_fragment
-      html = Simple::Builder::Fragments.img(uri: '/foo.jpg', title: 'foo', width: 2, height: 1)
+      html = Simple::Builder::Fragments.img(uri: '/foo.jpg', title: 'foo', width: 2, height: 1).to_html
       expected_html = %q{<img src="/foo.jpg" alt="foo" width="2" height="1">}
       assert { html == expected_html }
     end

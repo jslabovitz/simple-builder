@@ -3,7 +3,7 @@ module Simple
   class Builder
 
     def self.html5_document(&block)
-      HTML5Document.new.build(&block).to_html
+      HTML5Document.build(&block)
     end
 
     class HTML5Document < HTMLDocument

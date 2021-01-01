@@ -4,14 +4,15 @@ module Simple
 
   class Builder
 
-    def build(&block)
-      builder = Nokogiri::HTML::Builder.with(@root)
-      yield(builder)
-      self
+    def self.build(&block)
+      new.build(&block)
     end
 
-    def to_html
-      @root.to_html
+    def build(&block)
+      Nokogiri::HTML::Builder.with(@root) do |builder|
+        yield(builder)
+      end
+      @root
     end
 
     def find_link_elements
