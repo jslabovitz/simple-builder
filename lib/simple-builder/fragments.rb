@@ -5,7 +5,7 @@ module Simple
     class << self
 
       def google_analytics(tracker_id)
-        Builder.html_fragment do |html|
+        html_fragment do |html|
           html.script(type: 'text/javascript') do
             html << %Q{
               var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -24,7 +24,7 @@ module Simple
       end
 
       def link_if(state, &block)
-        Builder.html_fragment do |html|
+        html_fragment do |html|
           elem = Builder.html_fragment { |h| yield(h) }
           if state
             html.a(href: uri) { html << elem.to_html }
@@ -35,7 +35,7 @@ module Simple
       end
 
       def img(uri:, title:, width:, height:)
-        Builder.html_fragment do |html|
+        html_fragment do |html|
           html.img(
             src: uri,
             alt: title,
@@ -45,13 +45,13 @@ module Simple
       end
 
       def viewport
-        Builder.html_fragment do |html|
+        html_fragment do |html|
           html.meta(name: 'viewport', content: 'width=device-width, initial-scale=1')
         end
       end
 
       def stylesheet(href)
-        Builder.html_fragment do |html|
+        html_fragment do |html|
           html.link(rel: 'stylesheet', href: href, type: 'text/css')
         end
       end
