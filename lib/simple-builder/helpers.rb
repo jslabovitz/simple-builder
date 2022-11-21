@@ -4,29 +4,29 @@ module Simple
 
     class << self
 
-      def find_link_elements(doc)
+      def find_link_element_attributes(doc)
         doc.xpath('//@href | //@src')
       end
 
-      def find_head(doc)
+      def find_head_element(doc)
         doc.at_xpath('/html/head')
       end
 
-      def find_body(doc)
+      def find_body_element(doc)
         doc.at_xpath('/html/body')
       end
 
-      def find_title(doc)
-        doc.at_xpath('/html/head/title')&.text
+      def find_title_element(doc)
+        find_head_element(doc).at_xpath('title')
       end
 
-      def find_meta_tags(doc)
-        doc.xpath('/html/head/meta[@name]').map do |meta|
+      def find_meta_info(doc)
+        find_head_element(doc).xpath('meta[@name]').map do |meta|
           [meta['name'], meta['content']]
         end.to_h
       end
 
-      def p_children(doc)
+      def find_p_child_elements(doc)
         if (p = doc.at_xpath('p'))
           p.children
         else

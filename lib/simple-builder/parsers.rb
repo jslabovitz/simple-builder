@@ -7,14 +7,14 @@ module Simple
     class << self
 
       def parse_html(html)
-        Nokogiri::HTML5::Document.parse(html).tap { |doc| check_errors(doc) }
+        Nokogiri::HTML5::Document.parse(html).tap { |doc| check_html_errors(doc) }
       end
 
       def parse_html_fragment(html)
-        Nokogiri::HTML5::DocumentFragment.parse(html).tap { |doc| check_errors(doc) }
+        Nokogiri::HTML5::DocumentFragment.parse(html).tap { |doc| check_html_errors(doc) }
       end
 
-      def check_errors(doc)
+      def check_html_errors(doc)
         doc.errors.each do |error|
           raise ParseError, "HTML error #{error}"
         end
