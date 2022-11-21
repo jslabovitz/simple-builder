@@ -1,5 +1,3 @@
-$VERBOSE = false
-
 require 'minitest/autorun'
 require 'minitest/power_assert'
 
