@@ -25,7 +25,7 @@ module Simple
 
       def link_if(state, &block)
         html_fragment do |html|
-          elem = Builder.html_fragment { |h| yield(h) }
+          elem = html_fragment { |h| yield(h) }
           if state
             html.a(href: uri) { html << elem.to_html }
           else
