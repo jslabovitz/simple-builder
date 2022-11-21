@@ -26,6 +26,14 @@ module Simple
         end.to_h
       end
 
+      def p_children(doc)
+        if (p = doc.at_xpath('p'))
+          p.children
+        else
+          doc
+        end
+      end
+
       def replace_element(doc, xpath, &block)
         doc.xpath(xpath).each do |elem|
           elem.replace(yield(elem))
