@@ -40,6 +40,26 @@ module Simple
         end
       end
 
+      def textile_to_html(str)
+        parse_html_fragment(
+          RedCloth.new(str, [:no_span_caps]).to_html
+        ).to_html
+      end
+
+      def markdown_to_html(str)
+        parse_html_fragment(
+          Kramdown::Document.new(str.strip).to_html
+        ).to_html
+      end
+
+      def string_to_html(str)
+        find_p_child_elements(
+          parse_html_fragment(
+            RubyPants.new(str).to_html
+          )
+        ).to_html
+      end
+
     end
 
   end

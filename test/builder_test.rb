@@ -50,6 +50,12 @@ END
       assert { html == expected_html }
     end
 
+    def test_string_to_html
+      html = %q{'foo' <and> "bar"}.to_html
+      expected_html = %q{‘foo’ &lt;and&gt; “bar”}
+      assert { html == expected_html }
+    end
+
   end
 
 end
