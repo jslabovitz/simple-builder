@@ -2,23 +2,19 @@ module Simple
 
   class Builder
 
-    def self.html4_document(&block)
-      HTML4Document.build(&block)
+    def self.build_html4_document(&block)
+      HTML4Document.new.build_html(&block)
     end
 
-    def self.html5_document(&block)
-      HTML5Document.build(&block)
+    def self.build_html5_document(&block)
+      HTML5Document.new.build_html(&block)
     end
 
-    def self.html_fragment(&block)
-      HTMLFragment.build(&block)
+    def self.build_html(&block)
+      HTMLFragment.new.build_html(&block)
     end
 
-    def self.build(&block)
-      new.build(&block)
-    end
-
-    def build(&block)
+    def build_html(&block)
       Nokogiri::HTML::Builder.with(@root) do |builder|
         yield(builder)
       end

@@ -11,7 +11,7 @@ module Simple
   class BuilderTest < Minitest::Test
 
     def test_html4_document
-      html = Simple::Builder.html4_document do |b|
+      html = Simple::Builder.build_html4_document do |b|
         b.html(lang: 'en') do
           b.h1('foo')
         end
@@ -24,7 +24,7 @@ END
     end
 
     def test_html5_document
-      html = Simple::Builder.html5_document do |b|
+      html = Simple::Builder.build_html5_document do |b|
         b.html(lang: 'en') do
           b.h1('foo')
         end
@@ -37,7 +37,7 @@ END
     end
 
     def test_fragment
-      html = Simple::Builder.html_fragment do |b|
+      html = Simple::Builder.build_html do |b|
         b.h1('foo')
       end.to_html
       expected_html = %q{<h1>foo</h1>}

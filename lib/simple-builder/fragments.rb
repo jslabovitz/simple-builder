@@ -5,8 +5,8 @@ module Simple
     class << self
 
       def link_if(state, &block)
-        html_fragment do |html|
-          elem = html_fragment { |h| yield(h) }
+        build_html do |html|
+          elem = build_html { |h| yield(h) }
           if state
             html.a(href: uri) { html << elem.to_html }
           else
@@ -16,7 +16,7 @@ module Simple
       end
 
       def img(uri:, title:, width:, height:)
-        html_fragment do |html|
+        build_html do |html|
           html.img(
             src: uri,
             alt: title,
@@ -26,13 +26,13 @@ module Simple
       end
 
       def viewport
-        html_fragment do |html|
+        build_html do |html|
           html.meta(name: 'viewport', content: 'width=device-width, initial-scale=1')
         end
       end
 
       def stylesheet(href)
-        html_fragment do |html|
+        build_html do |html|
           html.link(rel: 'stylesheet', href: href, type: 'text/css')
         end
       end
