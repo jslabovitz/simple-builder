@@ -42,12 +42,6 @@ END
       assert { html == expected_html }
     end
 
-    def test_img_fragment
-      html = Simple::Builder.img(uri: '/foo.jpg', title: 'foo', width: 2, height: 1).to_html
-      expected_html = %q{<img src="/foo.jpg" alt="foo" width="2" height="1">}
-      assert { html == expected_html }
-    end
-
     def test_string_to_html
       html = %q{'foo' <and> "bar"}.to_html
       expected_html = %q{‘foo’ &lt;and&gt; “bar”}

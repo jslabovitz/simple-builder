@@ -4,36 +4,33 @@ module Simple
 
     class << self
 
-      def link_if(state, &block)
-        build_html do |html|
-          elem = build_html { |h| yield(h) }
-          if state
-            html.a(href: uri) { html << elem.to_html }
-          else
-            html << elem.to_html
-          end
-        end
-      end
-
-      def img(uri:, title:, width:, height:)
-        build_html do |html|
-          html.img(
-            src: uri,
-            alt: title,
-            width: width,
-            height: height)
-        end
-      end
-
       def viewport
         build_html do |html|
           html.meta(name: 'viewport', content: 'width=device-width, initial-scale=1')
         end
       end
 
-      def stylesheet(href)
+      def style(href=nil, &block)
         build_html do |html|
-          html.link(rel: 'stylesheet', href: href, type: 'text/css')
+          if href
+            html.link(href: href, rel: 'stylesheet', type: 'text/css')
+          elsif block_given?
+            html.style(type: 'text/css') do
+              html << yield
+            end
+          end
+        end
+      end
+
+      def script(src=nil, &block)
+        build_html do |html|
+          if src
+            html.script(src: src, type: 'text/javascript')
+          elsif block_given?
+            html.script(type: 'text/javascript') do
+              html << yield
+            end
+          end
         end
       end
 
