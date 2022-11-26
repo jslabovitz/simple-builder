@@ -6,7 +6,7 @@ module Simple
 
     class << self
 
-      def parse_html(html)
+      def parse_html_document(html)
         Nokogiri::HTML5::Document.parse(html).tap { |doc| check_html_errors(doc) }
       end
 

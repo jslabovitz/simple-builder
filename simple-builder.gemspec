@@ -13,9 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'kramdown', '~> 2.4'
   gem.add_dependency 'nokogiri', '~> 1.13'
-  gem.add_dependency 'RedCloth', '~> 4.3'
   gem.add_dependency 'rubypants', '~> 0.7'
 
   gem.add_development_dependency 'bundler', '~> 2.3'

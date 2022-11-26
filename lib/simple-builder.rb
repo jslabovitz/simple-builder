@@ -1,6 +1,4 @@
-require 'kramdown'
 require 'nokogiri'
-require 'RedCloth'
 require 'rubypants'
 
 require 'simple-builder/builders'
