@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name          = 'simple-builder'
-  gem.version       = '0.2'
+  gem.version       = '0.3'
   gem.licenses      = ['MIT']
   gem.authors       = 'John Labovitz'
   gem.email         = 'johnl@johnlabovitz.com'
